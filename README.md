@@ -1,22 +1,32 @@
-# next-template
+### Nested Route Loading Bug
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+#### Bug Overview
 
-## Usage
+This repo demonstrates an issue in a Next.js app where the root route's loading component is shown instead of the dynamic route's when navigating to `/subroute/[dynamic]`.
 
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
+#### Setup
 
-## Features
+1. Clone the repo.
+2. Run `npm install` to install dependencies.
+3. Start the app with `npm run dev`.
 
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
+#### Reproducing the Issue
 
-## License
+- Navigate to the homepage.
+- Click on the link for the dynamic subroute. It uses `Math.random()` for dynamic values.
+- Notice the root route's loading screen appears, not the dynamic route's.
 
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+#### Structure
+
+- `/`: Root route with its own loading component.
+- `/subroute`: Static route with its own loading component.
+- `/subroute/[dynamic]`: Dynamic route with a unique loading component.
+
+#### Goal
+
+We expect each route to display its respective loading component. The bug shows the root's loading instead of the dynamic route's.
+
+#### Additional Info
+
+- The issue is also shown in an attached video.
+- Check the repository for detailed code structure and loading component implementations.
